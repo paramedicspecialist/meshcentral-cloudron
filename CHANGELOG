@@ -1,0 +1,6 @@
+[1.2.6]
+* MeshCentral 1.2.6
+* PostgreSQL, outbound mail, TLS, and optional Cloudron sign-in or LDAP
+* Agents use the Cloudron certificate
+* OpenID Connect sign-out returns to the MeshCentral sign-in page
+* The first Cloudron sign-in is the site administrator

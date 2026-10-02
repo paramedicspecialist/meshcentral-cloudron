@@ -1,0 +1,66 @@
+{
+  "id": "com.meshcentral.cloudron",
+  "title": "MeshCentral",
+  "author": "Darkhorse",
+  "packagerName": "Darkhorse",
+  "packagerUrl": "https://github.com/paramedicspecialist",
+  "packageUrl": "https://github.com/paramedicspecialist/meshcentral-cloudron",
+  "tagline": "Remote device management for your Cloudron",
+  "version": "1.2.6",
+  "upstreamVersion": "1.2.6",
+  "description": "file://DESCRIPTION.md",
+  "changelog": "file://CHANGELOG",
+  "postInstallMessage": "file://POSTINSTALL.md",
+  "website": "https://meshcentral.com",
+  "documentationUrl": "https://docs.meshcentral.com",
+  "forumUrl": "https://github.com/Ylianst/MeshCentral/discussions",
+  "healthCheckPath": "/health.ashx",
+  "httpPort": 8080,
+  "memoryLimit": 1073741824,
+  "minBoxVersion": "10.0.0",
+  "manifestVersion": 2,
+  "optionalSso": true,
+  "icon": "file://logo.png",
+  "iconUrl": "https://raw.githubusercontent.com/paramedicspecialist/meshcentral-cloudron/main/logo.png",
+  "tags": [
+    "remote",
+    "management",
+    "rdp",
+    "vnc",
+    "devices"
+  ],
+  "mediaLinks": [
+    "https://raw.githubusercontent.com/paramedicspecialist/meshcentral-cloudron/main/screenshot.png"
+  ],
+  "addons": {
+    "localstorage": {},
+    "postgresql": {},
+    "sendmail": {},
+    "tls": {},
+    "oidc": {
+      "loginRedirectUri": "/auth-oidc-callback",
+      "logoutRedirectUri": "/login",
+      "tokenSignatureAlgorithm": "RS256"
+    },
+    "ldap": {}
+  },
+  "tcpPorts": {
+    "MPS_PORT": {
+      "title": "Intel AMT MPS",
+      "description": "Intel AMT CIRA Management Presence Server. MeshAgents connect over the public HTTPS URL and do not use this port.",
+      "defaultValue": 4433,
+      "containerPort": 4433,
+      "enabledByDefault": false
+    }
+  },
+  "checklist": {
+    "first-admin-sso": {
+      "sso": true,
+      "message": "Create the first account with Cloudron sign-in. That person is the site administrator. My Users and My Server appear under their name. Later accounts stay normal users."
+    },
+    "first-admin-local": {
+      "sso": false,
+      "message": "Create the first account on the sign-in page. That person is the site administrator."
+    }
+  }
+}

@@ -1,0 +1,5 @@
+.cloudron.json
+*.tar
+.DS_Store
+.cursor/
+node_modules/

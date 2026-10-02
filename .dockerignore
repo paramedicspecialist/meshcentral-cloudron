@@ -1,0 +1,9 @@
+.git
+.github
+.cursor
+*.md
+CHANGELOG
+CloudronVersions.json
+screenshot.png
+logo.png
+node_modules

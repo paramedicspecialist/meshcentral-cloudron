@@ -1,0 +1,77 @@
+{
+  "stable": true,
+  "versions": {
+    "1.2.6": {
+      "creationDate": "Fri, 02 Oct 2026 02:34:15 GMT",
+      "manifest": {
+        "id": "com.meshcentral.cloudron",
+        "title": "MeshCentral",
+        "author": "Darkhorse",
+        "packagerName": "Darkhorse",
+        "packagerUrl": "https://github.com/paramedicspecialist",
+        "packageUrl": "https://github.com/paramedicspecialist/meshcentral-cloudron",
+        "tagline": "Remote device management for your Cloudron",
+        "version": "1.2.6",
+        "upstreamVersion": "1.2.6",
+        "description": "MeshCentral manages computers through a web browser. Install an agent on each machine, including machines behind NAT, and connect to the desktop, terminal, and files from this server.\n\nThis unofficial package uses Cloudron PostgreSQL, the Cloudron mail relay, and Cloudron TLS. Sign-in can stay inside MeshCentral, or use Cloudron OpenID Connect or LDAP.\n\nhttps://meshcentral.com",
+        "changelog": "* MeshCentral 1.2.6\n* PostgreSQL, outbound mail, TLS, and optional Cloudron sign-in or LDAP\n* Agents use the Cloudron certificate\n* OpenID Connect sign-out returns to the MeshCentral sign-in page\n* The first Cloudron sign-in is the site administrator",
+        "postInstallMessage": "MeshCentral is ready at $CLOUDRON-APP-ORIGIN.\n\n<sso>\nCreate the first account with Cloudron sign-in. That person is the site administrator. My Users and My Server appear under their name. New local accounts are already turned off. A second person who signs in before the app restarts also becomes a site administrator.\n</sso>\n\n<nosso>\nOpen $CLOUDRON-APP-ORIGIN and create the first account. That person is the site administrator.\n</nosso>\n\nDo not put this domain behind Cloudflare if agents must connect.\n\nIntel AMT is optional and off. Turn the Intel AMT MPS port on only if you use it.\n\nData is stored in /app/data/meshcentral-data and /app/data/meshcentral-files.",
+        "website": "https://meshcentral.com",
+        "documentationUrl": "https://docs.meshcentral.com",
+        "forumUrl": "https://github.com/Ylianst/MeshCentral/discussions",
+        "healthCheckPath": "/health.ashx",
+        "httpPort": 8080,
+        "memoryLimit": 1073741824,
+        "minBoxVersion": "10.0.0",
+        "manifestVersion": 2,
+        "optionalSso": true,
+        "icon": "file://logo.png",
+        "iconUrl": "https://raw.githubusercontent.com/paramedicspecialist/meshcentral-cloudron/main/logo.png",
+        "tags": [
+          "remote",
+          "management",
+          "rdp",
+          "vnc",
+          "devices"
+        ],
+        "mediaLinks": [
+          "https://raw.githubusercontent.com/paramedicspecialist/meshcentral-cloudron/main/screenshot.png"
+        ],
+        "addons": {
+          "localstorage": {},
+          "postgresql": {},
+          "sendmail": {},
+          "tls": {},
+          "oidc": {
+            "loginRedirectUri": "/auth-oidc-callback",
+            "logoutRedirectUri": "/login",
+            "tokenSignatureAlgorithm": "RS256"
+          },
+          "ldap": {}
+        },
+        "tcpPorts": {
+          "MPS_PORT": {
+            "title": "Intel AMT MPS",
+            "description": "Intel AMT CIRA Management Presence Server. MeshAgents connect over the public HTTPS URL and do not use this port.",
+            "defaultValue": 4433,
+            "containerPort": 4433,
+            "enabledByDefault": false
+          }
+        },
+        "checklist": {
+          "first-admin-sso": {
+            "sso": true,
+            "message": "Create the first account with Cloudron sign-in. That person is the site administrator. My Users and My Server appear under their name. Later accounts stay normal users."
+          },
+          "first-admin-local": {
+            "sso": false,
+            "message": "Create the first account on the sign-in page. That person is the site administrator."
+          }
+        },
+        "dockerImage": "ghcr.io/paramedicspecialist/meshcentral-cloudron:1.2.6"
+      },
+      "publishState": "published",
+      "ts": "Fri, 02 Oct 2026 04:51:26 GMT"
+    }
+  }
+}
