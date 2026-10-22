@@ -1,3 +1,6 @@
+[1.3.0]
+* MeshCentral 1.3.0
+
 [1.2.6]
 * MeshCentral 1.2.6
 * PostgreSQL, outbound mail, TLS, and optional Cloudron sign-in or LDAP
