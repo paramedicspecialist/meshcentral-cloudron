@@ -1,4 +1,4 @@
-FROM ghcr.io/ylianst/meshcentral:1.3.0-postgresql
+FROM ghcr.io/ylianst/meshcentral:1.3.1-postgresql
 
 USER root
 
