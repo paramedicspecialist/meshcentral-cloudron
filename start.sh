@@ -30,9 +30,17 @@ chmod 640 "${CERT_DIR}/tls_cert.pem" "${CERT_DIR}/tls_key.pem"
 node /app/pkg/configure.js
 echo "startup tls=${tls_source} domain=${CLOUDRON_APP_DOMAIN:-unset}"
 
-if id cloudron >/dev/null 2>&1; then
-    chown -R cloudron:cloudron /app/data "${CERT_DIR}"
-    run_as=(su-exec cloudron:cloudron)
+run_user="$(awk -F: '$3 == 1000 { print $1; exit }' /etc/passwd)"
+run_group="$(awk -F: '$3 == 1000 { print $1; exit }' /etc/group)"
+
+chown -R 1000:1000 /app/data "${CERT_DIR}"
+
+if [[ -n "${run_user}" ]]; then
+    if [[ -n "${run_group}" ]]; then
+        run_as=(su-exec "${run_user}:${run_group}")
+    else
+        run_as=(su-exec "${run_user}:1000")
+    fi
 else
     run_as=()
 fi

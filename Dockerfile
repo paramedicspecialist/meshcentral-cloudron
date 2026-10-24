@@ -3,9 +3,11 @@ FROM ghcr.io/ylianst/meshcentral:1.3.0-postgresql
 USER root
 
 RUN apk add --no-cache su-exec openssl \
-    && adduser -D -u 1000 -h /tmp cloudron \
     && mkdir -p /app/pkg /app/data \
-    && chown cloudron:cloudron /app/data
+    && if ! grep -q '^[^:]*:[^:]*:1000:' /etc/passwd; then \
+           adduser -D -u 1000 -h /tmp cloudron; \
+       fi \
+    && chown 1000:1000 /app/data
 
 ENV HOME=/tmp
 
